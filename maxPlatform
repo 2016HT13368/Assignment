@@ -1,0 +1,33 @@
+<?php
+function maxPlateForm($arr, $dep, $n) 
+{ 
+    sort($arr); 
+    sort($dep); 
+    $plateFormNeed = 1;  
+    $result = 1; 
+    $i = 1; 
+    $j = 0; 
+    while ($i < $n and $j < $n) 
+    { 
+        if ($arr[$i] < $dep[$j]) 
+        { 
+            $plateFormNeed++; 
+            $i++; 
+            if ($plateFormNeed > $result)  {
+                $result = $plateFormNeed;
+            }
+        } 
+        else
+        { 
+            $plateFormNeed--; 
+            $j++; 
+        } 
+    } 
+    return $result; 
+} 
+
+$arr = ['0900', '0915', '1030', '1045'];
+$dep = ['0930', '1300', '1100', '1145'];
+$n = count($arr);
+$res = maxPlateForm($arr, $dep, $n);
+ echo $res; exit;
